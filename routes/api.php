@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\LovController;
+use App\Http\Controllers\WorkoutController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ require __DIR__.'/auth.php';
 Route::apiResource('lovs', LovController::class);
 Route::apiResource('exercises', ExerciseController::class);
 Route::get('lovs-for-category', [LovController::class, 'getLovsForCategory']);
+Route::apiResource('workouts', WorkoutController::class);
