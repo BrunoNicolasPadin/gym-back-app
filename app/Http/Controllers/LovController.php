@@ -17,7 +17,6 @@ class LovController extends Controller
         ->allowedFilters(['label', 'category'])
         ->paginate(10)
         ->appends(request()->query());
-    
     }
 
     public function store(LovStoreRequest $request) : HttpResponse
@@ -44,5 +43,13 @@ class LovController extends Controller
         Lov::destroy($id);
 
         return response('', Response::HTTP_OK);
+    }
+
+    public function getLovsForCategory(Request $request)
+    {
+        return QueryBuilder::for(Lov::class)
+        ->allowedFilters(['category'])
+        ->orderBy('label')
+        ->get();
     }
 }
